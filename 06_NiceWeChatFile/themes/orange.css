@@ -1,0 +1,24 @@
+/* 主题：橙色温暖 */
+.theme-orange p { margin:1.2em 0;line-height:1.8;color:#451a03;font-size:16px; }
+.theme-orange h1 { margin:1.8em 0 1em;font-weight:700;color:#451a03;font-size:1.8em; }
+.theme-orange h2 { margin:1.6em 0 0.8em;font-weight:600;color:#ea580c;font-size:1.4em;padding-left:12px;border-left:4px solid #fb923c; }
+.theme-orange h3 { margin:1.4em 0 0.6em;font-weight:600;color:#c2410c;font-size:1.2em; }
+.theme-orange h4 { margin:1.2em 0 0.5em;font-weight:600;color:#c2410c;font-size:1.1em; }
+.theme-orange h5 { margin:1em 0 0.4em;font-weight:600;color:#c2410c;font-size:1em; }
+.theme-orange h6 { margin:0.8em 0 0.3em;font-weight:600;color:#c2410c;font-size:0.95em; }
+.theme-orange blockquote {font-size:13px;border-radius:8px;padding:3px 24px;margin:1.5em 0;color:#9a3412;background:#ffedd5;border-left:4px solid #fb923c;font-style:normal;}
+.theme-orange code { background:#ffedd5;padding:3px 8px;border-radius:4px;font-family:Consolas,Monaco,monospace;font-size:14px;color:#ea580c; }
+.theme-orange .code-block {background:#431407;padding:16px;border-radius:8px;overflow-x:auto;margin:1.5em 0;font-family:Consolas,Monaco,monospace;font-size:14px;color:#fed7aa; white-space:pre-wrap;
+.theme-orange .code-block code { background:none;padding:0;border-radius:0;color:inherit; }
+.theme-orange strong { font-weight:700;color:#ea580c; }
+.theme-orange a { color:#fb923c;text-decoration:none;border-bottom:1px solid #fdba74; }
+.theme-orange ul { margin:1.2em 0;padding-left:0;list-style-position:inside;}
+.theme-orange ol { margin:1.2em 0;padding-left:0;list-style-position:inside;}
+.theme-orange li { margin:0.5em 0;line-height:1.7;color:#451a03;list-style-position:inside;}
+.theme-orange hr { border:none;border-top:2px solid #fdba74;margin:2em 0; }
+.theme-orange table { border-collapse:collapse;width:100%;margin:1.5em 0; }
+.theme-orange th { border:1px solid #fdba74;padding:10px 14px;text-align:left;background:#fff7ed;color:#c2410c;font-weight:600; }
+.theme-orange td { border:1px solid #fdba74;padding:10px 14px;text-align:left;color:#451a03; }
+.theme-orange img { max-width:100%;height:auto;border-radius:4px;margin:1em 0; }
+
+.theme-orange blockquote p { margin-top:0; font-style:normal; }

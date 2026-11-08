@@ -1,0 +1,7 @@
+# Chrome 用户数据目录（微信发布工具运行时生成，含 Cookie/登录态，禁止提交）
+.publish_profile/
+.publish_profile_b/
+.publish_profile_c/
+# 匹配未来可能出现的其他变体
+.publish_profile*/
+.imgs/

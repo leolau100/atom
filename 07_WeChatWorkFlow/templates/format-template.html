@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{title}}</title>
+  <style>
+    /* 微信公众号兼容内联 CSS - 基础重置 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* 文章容器 */
+    .article-wrapper {
+      max-width: 677px;
+      margin: 0 auto;
+      padding: 20px 16px;
+      background-color: #ffffff;
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB",
+                   "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+      color: #3f3f3f;
+      line-height: 1.75;
+      word-break: break-all;
+      word-wrap: break-word;
+    }
+
+    /* 文章标题 */
+    .article-title {
+      font-size: 22px;
+      font-weight: bold;
+      color: #1a1a1a;
+      text-align: left;
+      margin-bottom: 8px;
+      line-height: 1.4;
+    }
+
+    /* 作者信息 */
+    .article-meta {
+      font-size: 13px;
+      color: #999999;
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid #f0f0f0;
+    }
+
+    .article-author {
+      display: inline-block;
+    }
+
+    /* 正文内容 */
+    .article-content {
+      font-size: 16px;
+      color: #3f3f3f;
+      line-height: 1.8;
+    }
+
+    /* 段落 */
+    .article-content p {
+      margin-bottom: 16px;
+      font-size: 16px;
+      line-height: 1.8;
+      color: #3f3f3f;
+    }
+
+    /* 标题级别 */
+    .article-content h1,
+    .article-content h2,
+    .article-content h3 {
+      font-weight: bold;
+      color: #1a1a1a;
+      margin-top: 28px;
+      margin-bottom: 12px;
+      line-height: 1.4;
+    }
+
+    .article-content h1 {
+      font-size: 20px;
+    }
+
+    .article-content h2 {
+      font-size: 18px;
+    }
+
+    .article-content h3 {
+      font-size: 16px;
+    }
+
+    /* 强调与加粗 */
+    .article-content strong,
+    .article-content b {
+      font-weight: bold;
+      color: #1a1a1a;
+    }
+
+    .article-content em,
+    .article-content i {
+      font-style: italic;
+    }
+
+    /* 列表 */
+    .article-content ul,
+    .article-content ol {
+      padding-left: 24px;
+      margin-bottom: 16px;
+    }
+
+    .article-content li {
+      font-size: 16px;
+      line-height: 1.8;
+      margin-bottom: 8px;
+      color: #3f3f3f;
+    }
+
+    /* 引用块 */
+    .article-content blockquote {
+      margin: 16px 0;
+      padding: 12px 16px;
+      border-left: 4px solid #07c160;
+      background-color: #f8f8f8;
+      color: #555555;
+      font-size: 15px;
+      line-height: 1.8;
+    }
+
+    /* 行内代码 */
+    .article-content code {
+      font-family: "Courier New", Courier, monospace;
+      font-size: 14px;
+      background-color: #f4f4f4;
+      color: #e83e8c;
+      padding: 2px 5px;
+      border-radius: 3px;
+    }
+
+    /* 代码块 */
+    .article-content pre {
+      background-color: #f4f4f4;
+      padding: 16px;
+      border-radius: 6px;
+      overflow-x: auto;
+      margin-bottom: 16px;
+    }
+
+    .article-content pre code {
+      background-color: transparent;
+      color: #333333;
+      padding: 0;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    /* 分隔线 */
+    .article-content hr {
+      border: none;
+      border-top: 1px solid #e8e8e8;
+      margin: 24px 0;
+    }
+
+    /* 超链接 */
+    .article-content a {
+      color: #07c160;
+      text-decoration: none;
+    }
+
+    /* 图片 */
+    .article-content img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 16px auto;
+      border-radius: 4px;
+    }
+
+    /* 表格 */
+    .article-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 16px;
+      font-size: 14px;
+    }
+
+    .article-content th,
+    .article-content td {
+      border: 1px solid #e8e8e8;
+      padding: 8px 12px;
+      text-align: left;
+    }
+
+    .article-content th {
+      background-color: #f4f4f4;
+      font-weight: bold;
+      color: #1a1a1a;
+    }
+
+    /* 文章底部 */
+    .article-footer {
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid #f0f0f0;
+      text-align: center;
+      font-size: 13px;
+      color: #999999;
+    }
+  </style>
+</head>
+<body>
+  <div class="article-wrapper">
+    <!-- 文章标题 -->
+    <h1 class="article-title">{{title}}</h1>
+
+    <!-- 作者与元信息 -->
+    <div class="article-meta">
+      <span class="article-author">作者：{{author}}</span>
+    </div>
+
+    <!-- 正文内容 -->
+    <div class="article-content">
+      {{content}}
+    </div>
+
+    <!-- 文章尾部 -->
+    <div class="article-footer">
+      <p>— END —</p>
+    </div>
+  </div>
+</body>
+</html>

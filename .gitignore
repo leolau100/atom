@@ -1,0 +1,44 @@
+# ============================================================
+# ATOM 统一仓库根 .gitignore
+# 目的：只提交源码，排除模型权重 / 虚拟环境 / 浏览器配置 / 运行产物等大文件
+# 各子项目原有的 .gitignore 仍然生效，这里补充跨项目的通用规则
+# ============================================================
+
+# ---------- Python ----------
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+conda_env/
+
+# ---------- Node / 前端 ----------
+node_modules/
+dist/
+build/
+.vite/
+
+# ---------- 模型权重 / 大型检查点 ----------
+checkpoints/
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+*.onnx
+
+# ---------- 浏览器配置（含登录态 Cookie，禁止入库） ----------
+.publish_profile*/
+
+# ---------- 各项目运行产物 / 大数据目录 ----------
+audio/
+2026/
+output/
+loc_pictures_output/
+article/
+bgmusic/
+downloads/
+uploads/
+
+# ---------- 系统 / 日志 ----------
+.DS_Store
+*.log

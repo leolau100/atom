@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cover - {{title}}</title>
+  <style>
+    /* 封面图尺寸：微信公众号封面推荐比例 2.35:1，常用尺寸 900x383 px */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      width: 900px;
+      height: 383px;
+      overflow: hidden;
+    }
+
+    /* 封面容器 */
+    .cover-wrapper {
+      width: 900px;
+      height: 383px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 40%, #0f3460 100%);
+      overflow: hidden;
+    }
+
+    /* 背景装饰：左上角圆形光晕 */
+    .cover-wrapper::before {
+      content: "";
+      position: absolute;
+      top: -80px;
+      left: -80px;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      background: rgba(7, 193, 96, 0.15);
+      filter: blur(40px);
+    }
+
+    /* 背景装饰：右下角圆形光晕 */
+    .cover-wrapper::after {
+      content: "";
+      position: absolute;
+      bottom: -60px;
+      right: -60px;
+      width: 260px;
+      height: 260px;
+      border-radius: 50%;
+      background: rgba(7, 193, 96, 0.10);
+      filter: blur(30px);
+    }
+
+    /* 内容区域 */
+    .cover-content {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 40px 80px;
+      max-width: 820px;
+    }
+
+    /* 顶部装饰条 */
+    .cover-accent {
+      display: inline-block;
+      width: 40px;
+      height: 4px;
+      background-color: #07c160;
+      border-radius: 2px;
+      margin-bottom: 20px;
+    }
+
+    /* 标题 */
+    .cover-title {
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB",
+                   "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+      font-size: 40px;
+      font-weight: bold;
+      color: #ffffff;
+      line-height: 1.35;
+      letter-spacing: 0.02em;
+      text-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+      /* 超长标题自动换行，最多显示两行 */
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    /* 底部装饰条 */
+    .cover-divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 20px;
+      gap: 8px;
+    }
+
+    .cover-divider-line {
+      width: 60px;
+      height: 1px;
+      background-color: rgba(255, 255, 255, 0.3);
+    }
+
+    .cover-divider-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background-color: #07c160;
+    }
+  </style>
+</head>
+<body>
+  <div class="cover-wrapper">
+    <div class="cover-content">
+      <!-- 顶部绿色装饰条 -->
+      <span class="cover-accent"></span>
+
+      <!-- 封面标题：占位符由 cover.js 脚本替换 -->
+      <h1 class="cover-title">{{title}}</h1>
+
+      <!-- 底部分隔装饰 -->
+      <div class="cover-divider">
+        <span class="cover-divider-line"></span>
+        <span class="cover-divider-dot"></span>
+        <span class="cover-divider-line"></span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

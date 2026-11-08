@@ -1,0 +1,13 @@
+import { rec, shot, WS, CH, wait } from './lib.mjs';
+const { ctx, page } = await rec('zz-test3');
+await page.goto(`http://localhost:3000/en/workspace/${WS}/channels/${CH}/connections`, { waitUntil: 'networkidle', timeout: 60000 });
+await wait(page, 4500);
+await shot(page, 't3-conn-empty');
+await page.getByRole('button', { name: 'Connect', exact: true }).first().click();
+await wait(page, 3500);
+await shot(page, 't3-conn-modal');
+console.log('弹窗 TEXT:', (await page.evaluate(() => document.body.innerText.slice(0,800))).replace(/\n+/g,' | '));
+console.log('弹窗 INPUTS:', JSON.stringify(await page.evaluate(() => Array.from(document.querySelectorAll('input')).map(i=>({type:i.type,name:i.getAttribute('name'),ph:i.getAttribute('placeholder')})).slice(0,15))));
+console.log('弹窗 BUTTONS:', JSON.stringify(await page.evaluate(() => Array.from(document.querySelectorAll('button')).map(b=>b.innerText.trim().slice(0,25)).filter(Boolean).slice(0,30))));
+console.log('弹窗 TABLE 行:', (await page.evaluate(() => Array.from(document.querySelectorAll('tr,li')).map(e=>e.innerText.trim().replace(/\n+/g,'/').slice(0,40)).filter(Boolean).slice(0,15))).join(' ## '));
+await ctx.close();

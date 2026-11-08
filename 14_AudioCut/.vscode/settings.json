@@ -1,0 +1,11 @@
+{
+  // 纯文本（.txt）自动换行，方便审阅长段落配音稿
+  "[plaintext]": {
+    "editor.wordWrap": "on",
+    "editor.wordWrapColumn": 100
+  },
+  // markdown 草稿同样换行，避免长句横向滚动
+  "[markdown]": {
+    "editor.wordWrap": "on"
+  }
+}

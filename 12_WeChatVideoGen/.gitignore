@@ -1,0 +1,12 @@
+# 依赖
+node_modules/
+
+# 大型媒体：最终成片与录屏原始素材（按需本地保留，不入库）
+*.mp4
+*.webm
+out/
+seg/
+cards/
+
+# 系统文件
+.DS_Store

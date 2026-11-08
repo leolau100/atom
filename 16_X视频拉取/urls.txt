@@ -1,0 +1,3 @@
+# 每行一个 X 视频页面 URL，# 开头为注释
+# 支持形如 https://x.com/用户名/status/ID/video/1 的链接
+https://x.com/lixinbao_X/status/2118951687981515100/video/1

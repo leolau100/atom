@@ -1,0 +1,12 @@
+import { rec, shot, WS, CH, wait } from './lib.mjs';
+const { ctx, page } = await rec('zz-test2');
+await page.goto(`http://localhost:3000/en/workspace/${WS}/channels/${CH}`, { waitUntil: 'networkidle', timeout: 60000 });
+await wait(page, 4500);
+const els = await page.evaluate(() => Array.from(document.querySelectorAll('a,button,[role="tab"],li')).filter(e => /Connections|Roles|Members|Journals|Messages/.test(e.innerText||'')).map(e => ({tag:e.tagName, role:e.getAttribute('role'), href:e.getAttribute('href'), text:(e.innerText||'').slice(0,20)})));
+console.log('候选元素:', JSON.stringify(els));
+await page.locator('text=Connections').first().click();
+await wait(page, 4000);
+await shot(page, 't2-conn');
+console.log('点击后 TEXT:', (await page.evaluate(() => document.body.innerText.slice(0,700))).replace(/\n+/g,' | '));
+console.log('BUTTONS:', JSON.stringify(await page.evaluate(() => Array.from(document.querySelectorAll('button')).map(b=>b.innerText.trim().slice(0,25)).filter(Boolean).slice(0,30))));
+await ctx.close();

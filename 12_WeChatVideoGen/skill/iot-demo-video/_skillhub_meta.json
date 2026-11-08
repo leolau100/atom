@@ -1,0 +1,18 @@
+{
+  "name": "开源平台演示视频制作",
+  "installedAt": 1788534800861,
+  "source": "local",
+  "version": "1.7.1",
+  "examples_zh": [
+    "帮我录一个 XX 开源平台的操作视频",
+    "给这个条目生成演示视频，文件名要和条目一致",
+    "把文档里的系统做成操作视频，加真实背景音乐",
+    "给视频加一张醒目的封面图"
+  ],
+  "examples_en": [
+    "Record an operation demo video for this open-source platform",
+    "Generate a demo video for this entry, name it after the entry",
+    "Make an operation video from this doc with real background music"
+  ],
+  "iconSource": "letter:auto"
+}
