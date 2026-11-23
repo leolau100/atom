@@ -141,7 +141,7 @@ jy_draft.py reopen                                 # 重开剪映并置顶
 ### 视频号发布（brookdadrian 账号，Chrome CDP 9333）
 
 - **发布完成后默认加一条评论并置顶（2026-11-23 用户明确）**：每条视频发表成功后，必须立即在评论区发一条 ≤100 字的简介评论，然后置顶该评论。这是流水线的固定收尾步骤，不要问、不要漏。
-  - 脚本：工作区 `scripts_videohao/`（`mov_publish_lib.py` 发布 / `cmt_batch.py` 批量评论 / `cmt_pin.py` 置顶 / `comments_45.py` 文案库）。
+  - 脚本：`/Users/liulei/Product/WeChatArticle/十分钟读完一本书/scripts/视频号发布/`（`mov_publish_lib.py` 发布 / `mov_batch.py` 批量发布 / `cmt_batch.py` 批量评论 / `cmt_pin.py` 置顶 / `comments_45.py` 文案库），已入 WeChatArticle 仓库（GitHub origin 已推送）。
   - 踩坑：评论面板左列表条目是 `.feed-content`、滚动容器 `.feeds-container`；置顶菜单的「置顶」项在 popover 里，**JS click 无效，必须用真实鼠标坐标点击**（`Input.dispatchMouseEvent`）；提交按钮文本是「评论」不是「发表」。
 - **封面默认用纯书名横版图 `{书名}.png`**（2176×1024，画面带书名文字），不用 `{书名}_竖屏封面.png`。
 - **短标题特殊字符坑**：短标题含中点「·」会被判「标题包含特殊字符」、发表按钮变灰。书名带中点时（如「安娜·卡列尼娜」）短标题写成「十分钟读完安娜卡列尼娜」（去中点）。允许符号仅：书名号、引号、冒号、加号、问号、百分号、摄氏度；逗号用空格代替。
