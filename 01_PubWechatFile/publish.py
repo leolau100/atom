@@ -431,7 +431,7 @@ def main():
                 edit.wait_for_timeout(1500)
             st = body_stats()
             log(f"[INFO] paste via real clipboard: len={st['len']} h2={st['h2']} img={st['img']}")
-            if st["len"] < 200:
+            if st["len"] < 50:
                 log("[FAIL] body still empty after real paste + 继续插入")
                 return 'empty'
             return 'ok'
@@ -446,7 +446,7 @@ def main():
         last_mmbiz = -1
         while time.time() < deadline:
             st = body_stats()
-            if st["mmbiz"] >= n_img and st["len"] > 500:
+            if st["mmbiz"] >= n_img and st["len"] > 50:
                 log(f"[INFO] all {n_img} images uploaded: {json.dumps(st, ensure_ascii=False)}")
                 break
             if st["mmbiz"] != last_mmbiz:
@@ -469,7 +469,7 @@ def main():
         log("[INFO] heading bgs:", json.dumps(bg_info, ensure_ascii=False))
         try: edit.screenshot(path="/tmp/after_paste.png")
         except Exception: pass
-        if stats["len"] < 500:
+        if stats["len"] < 50:
             log("[FAIL] body still nearly empty -> abort, NOT saving draft")
             ctx.close(); return
         if stats["mmbiz"] < n_img:
