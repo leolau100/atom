@@ -615,17 +615,21 @@ def sync_cover_index(fold):
     return n
 
 
-def make_cover(title, out, base=None):
+def make_cover(title, out, base=None, host=None):
     if base is None:
         base = current_bg(os.path.dirname(os.path.abspath(out)))
+    if host is None:
+        host = os.environ.get("BOOK_HOST", "将军")  # 品牌固定「燕麦粥·读书」，主播默认将军
     if not os.path.isfile(COVER_SCRIPT):
         print("  [提示] 缺少 make_cover.py，跳过封面生成")
         return False
-    r = subprocess.run([sys.executable, COVER_SCRIPT,
-                        "--title", norm_title(title),
-                        "--out", out, "--base", base or COVER_BASE,
-                        "--no-backup"],
-                       capture_output=True, text=True)
+    cmd = [sys.executable, COVER_SCRIPT,
+           "--title", norm_title(title),
+           "--out", out, "--base", base or COVER_BASE]
+    if host:
+        cmd += ["--host", host]
+    cmd += ["--no-backup"]
+    r = subprocess.run(cmd, capture_output=True, text=True)
     if r.returncode != 0:
         print("  [提示] 封面生成失败:", (r.stderr or r.stdout).strip()[:200])
         return False
@@ -1968,8 +1972,8 @@ def cmd_covers(args):
     print(f"输出目录（同 md）: {folder}\n")
 
     expected = {
-        COVER_SCRIPTS[0]: f"{book}_封面.png",
-        COVER_SCRIPTS[1]: f"{book}.png",
+        COVER_SCRIPTS[0]: f"{book}_竖屏封面.png",
+        COVER_SCRIPTS[1]: f"{book}_B站封面.png",
     }
     for script in COVER_SCRIPTS:
         sp = cover_script_path(root, script)

@@ -10,12 +10,13 @@ description: "每天一本书 / 十分钟读完一本书" 视频生产流水线�
 
 ## 一、铁律
 
-> **⚠️ 执行前必做 · 每次先拉取最新 skill（2026-11-24 用户明确）**：动任何文件、选书、写稿之前，先在下面两个仓库分别执行 `git pull`（命令见下），确保 skill 与脚本是远端最新版，绝不基于过期规则作业。两份 skill 分属两个仓库（生效正本在 ATOM，仓库副本在 WeChatArticle），以远端最新提交为准；拉取后再读正文、核对断点，若发现两份关键规则不一致，先按最新提交同步再继续。
+> **⚠️ 执行前必做 · 每次先更新 skill（2026-11-24 用户明确）**：动任何文件、选书、写稿之前，**第一步**先运行下面这条命令，确保 skill 与脚本是远端最新版，绝不基于过期规则作业：
 >
 > ```bash
-> cd /Users/liulei/Product/ATOM && git pull origin master          # 生效正本（~/.workbuddy/skills 软链指向此）
-> cd /Users/liulei/Product/WeChatArticle && git pull origin main   # 仓库副本 + 发布/渲染脚本
+> bash "/Users/liulei/Product/WeChatArticle/十分钟读完一本书/scripts/pull_latest_skills.sh"
 > ```
+>
+> 脚本经用户本地代理 **127.0.0.1:7897**（`ssh.github.com:443` + HTTP CONNECT）安全 fetch/pull 两个仓库：**ATOM**（视频类 skill 生效正本，`~/.workbuddy/skills` 软链指向此）与 **WeChatArticle**（仓库副本 + 发布/渲染脚本）。**绝不要直接用裸 `git pull`**：remote 是 `git@github.com:`（SSH/22），代理会拦 22 端口导致 fetch 超时。脚本只做 fast-forward、本地有未提交改动时跳过 merge 绝不覆盖，网络/冲突一律降级为警告、不阻断流水线；报「本地有未提交改动而跳过」属正常保护，沿用本地 skill 继续即可，不要 stash 覆盖工作区。拉取后再读正文、核对断点，若发现两份关键规则不一致，先按最新提交同步再继续。
 
 1. **严格逐本串行**：一本书从核对资料 → 文稿 → 配图 → TTS → 剪映草稿 → 双封面 → 导出 → B 站发布 → 评论置顶 → **加入合集** → 状态回填，**全链走完再做下一本**。不要提前集中备料/批量建目录/批量写元数据（用户会当成「批量处理」而打断）。
 2. **持续执行不设数量上限**：逐本串行一直做下去，不要在第 20 本或任何数量主动停下；只有用户明确叫停才停。每完成一本写进度到当日日志与交接说明，队列用尽按榜单顺序继续挑经典书目。

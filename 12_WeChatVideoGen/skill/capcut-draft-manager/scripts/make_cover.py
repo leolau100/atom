@@ -49,7 +49,7 @@ def text_width(draw, text, font, spacing=0):
     return sum(draw.textbbox((0, 0), c, font=font)[2] for c in text) + spacing * max(len(text) - 1, 0)
 
 
-def build(title, out, base_path, backup=True):
+def build(title, out, base_path, backup=True, host=""):
     if not os.path.isfile(base_path):
         raise SystemExit(f"底图不存在: {base_path}")
     os.makedirs(os.path.dirname(out) or ".", exist_ok=True)
@@ -147,11 +147,19 @@ def build(title, out, base_path, backup=True):
     draw.line([(lx0, ly), (lx0 + line_w, ly)],
               fill=c_line, width=4)
 
+    # 品牌「燕麦粥 · 读书」固定；有主播时追加主播小字（如「主播 · 将军」）
     sub = "燕麦粥 · 读书"
     f_sub = load_font(44)
     sub_w = text_width(draw, sub, f_sub)
     draw.text(((W - sub_w) // 2, int(H * 0.86)), sub,
               font=f_sub, fill=c_sub)
+
+    if host:
+        f_host = load_font(30)
+        host_text = f"主播 · {host}"
+        hw = text_width(draw, host_text, f_host)
+        draw.text(((W - hw) // 2, int(H * 0.92)), host_text,
+                  font=f_host, fill=c_sub)
 
     base.save(out, "JPEG", quality=92)
     print(f"封面已生成: {out}  ({base.size[0]}x{base.size[1]}, 书名《{title}》)")
@@ -162,10 +170,11 @@ def main():
     ap.add_argument("--title", required=True, help="书名（不带书名号）")
     ap.add_argument("--out", required=True, help="输出 jpg 绝对路径")
     ap.add_argument("--base", default=DEFAULT_BASE, help="底图路径")
+    ap.add_argument("--host", default="", help="主播名（如 将军），留空则只显示品牌署名")
     ap.add_argument("--no-backup", action="store_true", help="不备份原封面")
     a = ap.parse_args()
     build(a.title.strip().strip("《》").strip(), os.path.expanduser(a.out),
-          os.path.expanduser(a.base), backup=not a.no_backup)
+          os.path.expanduser(a.base), backup=not a.no_backup, host=a.host)
 
 
 if __name__ == "__main__":
